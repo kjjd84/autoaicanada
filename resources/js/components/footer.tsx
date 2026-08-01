@@ -1,6 +1,7 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
 export function Footer() {
+    const { site } = usePage().props;
     return (
         <footer className="border-t border-white/5 bg-surface-light">
             <div className="mx-auto max-w-7xl px-6 py-16">
@@ -9,12 +10,15 @@ export function Footer() {
                         <img
                             src="/images/logo.png"
                             alt="Auto AI Canada"
-                            className="mb-4 h-10 w-auto"
+                            className="mb-4 h-16 w-auto"
                         />
                         <p className="max-w-md text-sm leading-relaxed text-gray-400">
                             Canada&apos;s premier automotive AI sales platform.
                             We don&apos;t just capture leads—we qualify, nurture,
                             and close them.
+                        </p>
+                        <p className="mt-4 max-w-md text-sm text-gray-600">
+                            {site.address}
                         </p>
                     </div>
 
@@ -26,7 +30,7 @@ export function Footer() {
                             <li>
                                 <Link
                                     href="/"
-                                    className="hover:text-brand-300"
+                                    className="cursor-pointer hover:text-brand-300"
                                 >
                                     Home
                                 </Link>
@@ -34,7 +38,7 @@ export function Footer() {
                             <li>
                                 <Link
                                     href="/about"
-                                    className="hover:text-brand-300"
+                                    className="cursor-pointer hover:text-brand-300"
                                 >
                                     About
                                 </Link>
@@ -42,17 +46,9 @@ export function Footer() {
                             <li>
                                 <Link
                                     href="/blog"
-                                    className="hover:text-brand-300"
+                                    className="cursor-pointer hover:text-brand-300"
                                 >
                                     Blog
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/contact"
-                                    className="hover:text-brand-300"
-                                >
-                                    Contact
                                 </Link>
                             </li>
                         </ul>
@@ -60,19 +56,33 @@ export function Footer() {
 
                     <div>
                         <h3 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">
-                            Contact
+                            Get in Touch
                         </h3>
                         <ul className="space-y-2 text-sm text-gray-400">
                             <li>
                                 <a
-                                    href="mailto:paulmiller@autoaicanada.com"
-                                    className="hover:text-brand-300"
+                                    href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}
+                                    className="cursor-pointer hover:text-brand-300"
                                 >
-                                    paulmiller@autoaicanada.com
+                                    {site.phone}
                                 </a>
                             </li>
-                            <li>Proudly serving Canadian dealers</li>
-                            <li>Coast to coast</li>
+                            <li>
+                                <Link
+                                    href="/contact"
+                                    className="cursor-pointer hover:text-brand-300"
+                                >
+                                    Contact Us
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/landing"
+                                    className="cursor-pointer hover:text-brand-300"
+                                >
+                                    Book a Demo
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

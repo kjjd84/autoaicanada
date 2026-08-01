@@ -9,6 +9,8 @@ export interface HoneypotData {
 
 export interface SiteConfig {
     signInUrl: string;
+    phone: string;
+    address: string;
     gtmId: string;
 }
 

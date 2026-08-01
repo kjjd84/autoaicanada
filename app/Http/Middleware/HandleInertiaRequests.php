@@ -44,6 +44,8 @@ class HandleInertiaRequests extends Middleware
             ],
             'site' => [
                 'signInUrl' => config('site.sign_in_url'),
+                'phone' => config('site.phone'),
+                'address' => config('site.address'),
                 'gtmId' => config('site.gtm_id'),
             ],
             'honeypot' => fn () => app(Honeypot::class)->toArray(),

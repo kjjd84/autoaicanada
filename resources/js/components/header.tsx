@@ -17,7 +17,7 @@ export function Header() {
     return (
         <header className="fixed top-0 right-0 left-0 z-50 border-b border-white/5 bg-surface/80 backdrop-blur-xl">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-                <Link href="/" className="flex items-center gap-3">
+                <Link href="/" className="flex cursor-pointer items-center gap-3">
                     <img
                         src="/images/logo.png"
                         alt="Auto AI Canada"
@@ -30,25 +30,31 @@ export function Header() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="text-sm font-medium text-gray-300 transition-colors hover:text-white"
+                            className="cursor-pointer text-sm font-medium text-gray-300 transition-colors hover:text-white"
                         >
                             {link.label}
                         </Link>
                     ))}
                     <a
+                        href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}
+                        className="cursor-pointer text-sm font-medium text-gray-300 transition-colors hover:text-white"
+                    >
+                        {site.phone}
+                    </a>
+                    <a
                         href={site.signInUrl}
-                        className="text-sm font-medium text-brand-300 transition-colors hover:text-accent"
+                        className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-gray-200 backdrop-blur-sm transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:text-white"
                     >
                         Sign In
                     </a>
-                    <Link href="/contact">
+                    <Link href="/landing" className="cursor-pointer">
                         <Button size="sm">Book a Demo</Button>
                     </Link>
                 </nav>
 
                 <button
                     type="button"
-                    className="text-gray-300 md:hidden"
+                    className="cursor-pointer text-gray-300 md:hidden"
                     onClick={() => setMobileOpen(!mobileOpen)}
                     aria-label="Toggle menu"
                 >
@@ -84,19 +90,26 @@ export function Header() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-gray-300"
+                                className="cursor-pointer text-sm font-medium text-gray-300"
                                 onClick={() => setMobileOpen(false)}
                             >
                                 {link.label}
                             </Link>
                         ))}
                         <a
+                            href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}
+                            className="cursor-pointer text-sm font-medium text-gray-300"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            {site.phone}
+                        </a>
+                        <a
                             href={site.signInUrl}
-                            className="text-sm font-medium text-brand-300"
+                            className="inline-flex w-full cursor-pointer items-center justify-center rounded-lg border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-gray-200 backdrop-blur-sm transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:text-white"
                         >
                             Sign In
                         </a>
-                        <Link href="/contact" onClick={() => setMobileOpen(false)}>
+                        <Link href="/landing" className="cursor-pointer" onClick={() => setMobileOpen(false)}>
                             <Button size="sm" className="w-full">
                                 Book a Demo
                             </Button>

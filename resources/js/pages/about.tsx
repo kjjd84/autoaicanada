@@ -72,7 +72,7 @@ export default function About() {
                     </div>
 
                     <div className="mt-16 text-center">
-                        <Link href="/contact">
+                        <Link href="/landing">
                             <Button size="lg">Book a Demo</Button>
                         </Link>
                     </div>

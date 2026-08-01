@@ -5,9 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import SiteLayout from '@/layouts/site-layout';
-import { Form } from '@inertiajs/react';
+import { Form, usePage } from '@inertiajs/react';
 
 export default function Contact() {
+    const { site } = usePage().props;
     return (
         <SiteLayout title="Contact">
             <section className="py-24">
@@ -30,6 +31,25 @@ export default function Contact() {
                             </p>
 
                             <div className="mt-8 space-y-4">
+                                <div>
+                                    <h4 className="font-semibold text-brand-300">
+                                        Phone
+                                    </h4>
+                                    <a
+                                        href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}
+                                        className="mt-1 inline-block text-sm text-gray-400 transition-colors hover:text-brand-300"
+                                    >
+                                        {site.phone}
+                                    </a>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-brand-300">
+                                        Address
+                                    </h4>
+                                    <p className="mt-1 text-sm text-gray-400">
+                                        {site.address}
+                                    </p>
+                                </div>
                                 <h4 className="font-semibold text-brand-300">
                                     Proudly Serving Canadian Dealers
                                 </h4>
