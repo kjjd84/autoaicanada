@@ -1,6 +1,12 @@
 import type { Auth } from '@/types/auth';
 import type { HoneypotData, SiteConfig } from '@/types/site';
 
+declare global {
+    interface Window {
+        dataLayer?: Record<string, unknown>[];
+    }
+}
+
 declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface InputHTMLAttributes<T> {
@@ -20,3 +26,5 @@ declare module '@inertiajs/core' {
         };
     }
 }
+
+export {};
