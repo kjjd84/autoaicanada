@@ -5,65 +5,80 @@ namespace App\Services;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Symfony\Component\Yaml\Yaml;
 
 class BlogService
 {
-  /** @return Collection<int, array{slug: string, title: string, date: string, excerpt: string, image: ?string}> */
-  public function all(): Collection
-  {
-    $path = base_path('content/blog');
+    /** @return Collection<int, array{slug: string, title: string, date: string, excerpt: string, image: ?string}> */
+    public function all(): Collection
+    {
+        $path = base_path('content/blog');
 
-    if (! File::isDirectory($path)) {
-      return collect();
+        if (! File::isDirectory($path)) {
+            return collect();
+        }
+
+        return collect(File::files($path))
+            ->map(fn ($file) => $this->parsePost($file->getPathname(), $file->getFilenameWithoutExtension()))
+            ->filter()
+            ->sortByDesc('date')
+            ->values();
     }
 
-    return collect(File::files($path))
-      ->map(fn ($file) => $this->parsePost($file->getPathname(), $file->getFilenameWithoutExtension()))
-      ->filter()
-      ->sortByDesc('date')
-      ->values();
-  }
+    /** @return array{slug: string, title: string, date: string, excerpt: string, image: ?string, content: string}|null */
+    public function find(string $slug): ?array
+    {
+        $path = base_path("content/blog/{$slug}.md");
 
-  /** @return array{slug: string, title: string, date: string, excerpt: string, image: ?string, content: string}|null */
-  public function find(string $slug): ?array
-  {
-    $path = base_path("content/blog/{$slug}.md");
+        if (! File::exists($path)) {
+            return null;
+        }
 
-    if (! File::exists($path)) {
-      return null;
+        return $this->parsePost($path, $slug, includeContent: true);
     }
 
-    return $this->parsePost($path, $slug, includeContent: true);
-  }
+    /** @return array<string, string> */
+    private function parseFrontmatter(string $frontmatter): array
+    {
+        $meta = [];
 
-  /**
-   * @return array{slug: string, title: string, date: string, excerpt: string, image: ?string, content?: string}|null
-   */
-  private function parsePost(string $path, string $slug, bool $includeContent = false): ?array
-  {
-    $raw = File::get($path);
+        foreach (explode("\n", trim($frontmatter)) as $line) {
+            if (! str_contains($line, ':')) {
+                continue;
+            }
 
-    if (! preg_match('/^---\s*\n(.*?)\n---\s*\n(.*)$/s', $raw, $matches)) {
-      return null;
+            [$key, $value] = explode(':', $line, 2);
+            $meta[trim($key)] = trim($value, " \t\n\r\0\x0B\"");
+        }
+
+        return $meta;
     }
 
-    /** @var array<string, mixed> $meta */
-    $meta = Yaml::parse($matches[1]) ?? [];
-    $body = trim($matches[2]);
+    /**
+     * @return array{slug: string, title: string, date: string, excerpt: string, image: ?string, content?: string}|null
+     */
+    private function parsePost(string $path, string $slug, bool $includeContent = false): ?array
+    {
+        $raw = File::get($path);
 
-    $post = [
-      'slug' => $slug,
-      'title' => (string) ($meta['title'] ?? $slug),
-      'date' => (string) ($meta['date'] ?? ''),
-      'excerpt' => (string) ($meta['excerpt'] ?? ''),
-      'image' => isset($meta['image']) ? (string) $meta['image'] : null,
-    ];
+        if (! preg_match('/^---\s*\n(.*?)\n---\s*\n(.*)$/s', $raw, $matches)) {
+            return null;
+        }
 
-    if ($includeContent) {
-      $post['content'] = Str::markdown($body);
+        $meta = $this->parseFrontmatter($matches[1]);
+        $body = trim($matches[2]);
+
+        $post = [
+            'slug' => $slug,
+            'title' => (string) ($meta['title'] ?? $slug),
+            'date' => (string) ($meta['date'] ?? ''),
+            'excerpt' => (string) ($meta['excerpt'] ?? ''),
+            'image' => isset($meta['image']) ? (string) $meta['image'] : null,
+        ];
+
+        if ($includeContent) {
+            $post['content'] = Str::markdown($body);
+        }
+
+        return $post;
     }
-
-    return $post;
-  }
 }
