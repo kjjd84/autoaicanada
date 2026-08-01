@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@theme {
+    --font-sans:
+        'Inter', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+  --color-brand-50: #e6f3ff;
+  --color-brand-100: #b3d9ff;
+  --color-brand-200: #80bfff;
+  --color-brand-300: #4da6ff;
+  --color-brand-400: #1a8cff;
+  --color-brand-500: #0077e6;
+  --color-brand-600: #0066cc;
+  --color-brand-700: #0052a3;
+  --color-brand-800: #003d7a;
+  --color-brand-900: #002952;
+  --color-brand-950: #001429;
+
+  --color-accent: #00d4ff;
+  --color-surface: #0a0f1a;
+  --color-surface-light: #111827;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-gray-100 antialiased;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-300 via-accent to-brand-400 bg-clip-text text-transparent;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px rgba(0, 119, 230, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 119, 230, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 119, 230, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+.prose-blog h1,
+.prose-blog h2,
+.prose-blog h3 {
+  background: linear-gradient(to right, var(--color-brand-300), var(--color-accent), var(--color-brand-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.prose-blog p {
+  @apply mb-4 leading-relaxed text-gray-300;
+}
+
+.prose-blog ul,
+.prose-blog ol {
+  @apply mb-4 ml-6 list-disc text-gray-300;
+}
+
+.prose-blog a {
+  @apply text-brand-300 hover:text-accent;
+}
+
+.prose-blog strong {
+  @apply text-white;
+}
