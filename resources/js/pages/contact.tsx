@@ -6,34 +6,38 @@ import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import SiteLayout from '@/layouts/site-layout';
 import { Form, Link, usePage } from '@inertiajs/react';
+import type { LucideIcon } from 'lucide-react';
+import { Handshake, MessageCircleQuestion, MonitorPlay } from 'lucide-react';
 
-const contactReasons = [
+const contactReasons: {
+    icon: LucideIcon;
+    iconClassName: string;
+    title: string;
+    description: string;
+}[] = [
     {
-        icon: (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-        ),
+        icon: MonitorPlay,
+        iconClassName:
+            'border-brand-400/30 bg-gradient-to-br from-brand-500/20 to-brand-500/5 text-brand-300 group-hover:border-brand-400/50 group-hover:shadow-brand-500/20',
         title: 'Book a Demo',
-        description: 'See Auto AI Canada in action with a personalized walkthrough of the platform.',
+        description:
+            'See Auto AI Canada in action with a personalized walkthrough of the platform.',
     },
     {
-        icon: (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-            </svg>
-        ),
+        icon: MessageCircleQuestion,
+        iconClassName:
+            'border-accent/30 bg-gradient-to-br from-accent/15 to-accent/5 text-accent group-hover:border-accent/50 group-hover:shadow-accent/20',
         title: 'General Inquiry',
-        description: 'Have questions about pricing, integrations, or custom agent configuration? We\'re here to help.',
+        description:
+            "Have questions about pricing, integrations, or custom agent configuration? We're here to help.",
     },
     {
-        icon: (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 2.902l-.883.882a2.25 2.25 0 01-3.182 0l-.883-.882m7.5-3.097a9 9 0 10-12.825 0M15 6.75a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-        ),
+        icon: Handshake,
+        iconClassName:
+            'border-brand-300/30 bg-gradient-to-br from-brand-300/15 to-brand-300/5 text-brand-200 group-hover:border-brand-300/50 group-hover:shadow-brand-300/20',
         title: 'Partnership',
-        description: 'Interested in partnering with Auto AI Canada? Let\'s explore opportunities together.',
+        description:
+            "Interested in partnering with Auto AI Canada? Let's explore opportunities together.",
     },
 ];
 
@@ -106,13 +110,18 @@ export default function Contact() {
                             </div>
 
                             <div className="mt-10 grid gap-6">
-                                {contactReasons.map((reason) => (
+                                {contactReasons.map((reason) => {
+                                    const Icon = reason.icon;
+
+                                    return (
                                     <div
                                         key={reason.title}
                                         className="group flex gap-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-6 transition-all duration-300 hover:border-brand-500/30"
                                     >
-                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand-500/30 bg-brand-500/10 text-brand-300">
-                                            {reason.icon}
+                                        <div
+                                            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border shadow-lg shadow-transparent transition-all duration-300 group-hover:shadow-lg ${reason.iconClassName}`}
+                                        >
+                                            <Icon className="h-6 w-6" strokeWidth={1.75} />
                                         </div>
                                         <div>
                                             <h4 className="font-semibold text-white">
@@ -123,7 +132,8 @@ export default function Contact() {
                                             </p>
                                         </div>
                                     </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
