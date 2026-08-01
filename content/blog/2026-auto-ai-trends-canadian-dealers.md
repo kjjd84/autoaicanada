@@ -2,7 +2,7 @@
 title: "2026 Auto AI Trends for Canadian Dealers"
 date: "2026-02-14"
 excerpt: "What's next for automotive AI in Canada? Key trends shaping dealership technology in 2026 and beyond."
-image: "/images/hero-bg.png"
+image: "/images/blog/2026-auto-ai-trends-canadian-dealers.png"
 ---
 
 As we move through 2026, automotive AI continues evolving rapidly. Canadian dealers who stay ahead of these trends will maintain competitive advantages in an increasingly digital marketplace.

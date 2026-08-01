@@ -2,7 +2,7 @@
 title: "5 Ways AI Recovers Lost Leads for Dealers"
 date: "2025-04-22"
 excerpt: "Your CRM is full of leads that went cold. Learn how AI agents can re-engage them and turn lost opportunities into sales."
-image: "/images/dashboard.png"
+image: "/images/blog/5-ways-ai-recovers-lost-leads.png"
 ---
 
 Every dealership has them—leads that showed initial interest but went silent. Maybe they got busy, maybe they bought elsewhere, or maybe they just needed a nudge. Whatever the reason, these cold leads represent significant untapped revenue.

@@ -1,3 +1,4 @@
+import { FieldLabel } from '@/components/ui/field-label';
 import { cn } from '@/lib/utils';
 import type { InputHTMLAttributes } from 'react';
 
@@ -11,14 +12,7 @@ export function Input({ className, label, error, id, ...props }: InputProps) {
 
     return (
         <div className="space-y-1.5">
-            {label && (
-                <label
-                    htmlFor={inputId}
-                    className="block text-sm font-medium text-gray-300"
-                >
-                    {label}
-                </label>
-            )}
+            {label && <FieldLabel htmlFor={inputId}>{label}</FieldLabel>}
             <input
                 id={inputId}
                 className={cn(

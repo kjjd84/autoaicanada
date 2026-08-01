@@ -2,7 +2,7 @@
 title: "Credit Inquiries and AI: What Dealers Need to Know"
 date: "2025-12-03"
 excerpt: "Can AI handle sensitive credit conversations? Learn how modern AI agents navigate financing discussions professionally."
-image: "/images/dashboard.png"
+image: "/images/blog/credit-inquiries-and-ai.png"
 ---
 
 Credit and financing questions are among the most sensitive in automotive sales. Dealers rightly wonder: can AI handle these conversations appropriately?

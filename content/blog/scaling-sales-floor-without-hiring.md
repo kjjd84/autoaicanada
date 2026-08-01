@@ -2,7 +2,7 @@
 title: "Scaling Your Sales Floor Without Hiring"
 date: "2026-01-20"
 excerpt: "Grow your sales capacity without adding headcount. AI lets you handle more leads with your existing team."
-image: "/images/ai-agent.png"
+image: "/images/blog/scaling-sales-floor-without-hiring.png"
 ---
 
 Hiring is hard. Training is expensive. Turnover is constant. What if you could scale your sales capacity without adding a single employee?

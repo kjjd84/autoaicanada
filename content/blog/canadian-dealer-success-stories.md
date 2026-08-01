@@ -2,7 +2,7 @@
 title: "Canadian Dealer Success Stories with AI"
 date: "2025-09-25"
 excerpt: "Real results from real Canadian dealerships using Auto AI Canada to transform their sales operations."
-image: "/images/hero-bg.png"
+image: "/images/blog/canadian-dealer-success-stories.png"
 ---
 
 Across Canada, from the Maritimes to the West Coast, dealerships are discovering what AI can do for their bottom line. Here are stories from dealers who made the leap.

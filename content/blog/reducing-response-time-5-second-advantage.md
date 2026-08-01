@@ -2,7 +2,7 @@
 title: "Reducing Response Time: The 5-Second Advantage"
 date: "2025-11-05"
 excerpt: "Speed wins in automotive sales. Discover why responding in seconds instead of hours dramatically improves conversion rates."
-image: "/images/ai-agent.png"
+image: "/images/blog/reducing-response-time-5-second-advantage.png"
 ---
 
 MIT research found that responding to a lead within 5 minutes makes you 21 times more likely to qualify that lead compared to waiting 30 minutes. Auto AI Canada responds in 5 seconds.

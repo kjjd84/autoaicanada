@@ -2,7 +2,7 @@
 title: "The Future of BDC: AI vs Traditional"
 date: "2025-05-10"
 excerpt: "Is your BDC team keeping pace? Compare traditional business development centers with AI-powered alternatives."
-image: "/images/ai-agent.png"
+image: "/images/blog/future-of-bdc-ai-vs-traditional.png"
 ---
 
 The Business Development Center has been the backbone of dealership lead management for decades. But as technology advances, the question isn't whether AI will replace BDC—it's how quickly smart dealers will adopt it.

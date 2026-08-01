@@ -1,3 +1,4 @@
+import { FieldLabel } from '@/components/ui/field-label';
 import { useRef, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -91,9 +92,7 @@ export function SignaturePad({ value, onChange, error }: SignaturePadProps) {
 
     return (
         <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-300">
-                Your Signature *
-            </label>
+            <FieldLabel>Your Signature *</FieldLabel>
             <div
                 className={cn(
                     'relative rounded-lg border bg-white/5',

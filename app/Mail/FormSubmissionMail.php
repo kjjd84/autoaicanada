@@ -10,27 +10,28 @@ use Illuminate\Queue\SerializesModels;
 
 class FormSubmissionMail extends Mailable
 {
-  use Queueable, SerializesModels;
+    use Queueable, SerializesModels;
 
-  /**
-   * @param  array<string, string>  $fields
-   */
-  public function __construct(
-    public string $formName,
-    public array $fields,
-  ) {}
+    /**
+     * @param  array<string, string>  $fields
+     */
+    public function __construct(
+        public string $formName,
+        public array $fields,
+        public ?string $signatureImageData = null,
+    ) {}
 
-  public function envelope(): Envelope
-  {
-    return new Envelope(
-      subject: "New {$this->formName} Submission — Auto AI Canada",
-    );
-  }
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: "New {$this->formName} Submission — Auto AI Canada",
+        );
+    }
 
-  public function content(): Content
-  {
-    return new Content(
-      markdown: 'emails.form-submission',
-    );
-  }
+    public function content(): Content
+    {
+        return new Content(
+            markdown: 'emails.form-submission',
+        );
+    }
 }

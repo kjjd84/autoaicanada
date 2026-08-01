@@ -2,7 +2,7 @@
 title: "Why Appointment Show-Up Rates Improve with AI"
 date: "2025-06-18"
 excerpt: "No-shows cost dealerships thousands. Learn how AI scheduling leads to better confirmation rates and more ups on the floor."
-image: "/images/dashboard.png"
+image: "/images/blog/appointment-show-up-rates-with-ai.png"
 ---
 
 A booked appointment means nothing if the customer doesn't show up. Industry data suggests show-up rates hover around 50-60% for traditionally booked appointments. AI is changing that equation dramatically.

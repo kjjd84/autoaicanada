@@ -8,12 +8,16 @@ use Illuminate\Http\RedirectResponse;
 
 class SignatureFormController extends Controller
 {
-  use SendsFormSubmissions;
+    use SendsFormSubmissions;
 
-  public function store(SignatureFormRequest $request): RedirectResponse
-  {
-    $this->sendFormSubmission('Signature Authorization', $request->fieldLabels());
+    public function store(SignatureFormRequest $request): RedirectResponse
+    {
+        $this->sendFormSubmission(
+            'Signature Authorization',
+            $request->fieldLabels(),
+            $request->signatureImageData(),
+        );
 
-    return redirect()->route('thanks');
-  }
+        return redirect()->route('thanks');
+    }
 }

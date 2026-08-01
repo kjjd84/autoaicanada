@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Mail;
 
 trait SendsFormSubmissions
 {
-  /**
-   * @param  array<string, string>  $fields
-   */
-  protected function sendFormSubmission(string $formName, array $fields): void
-  {
-    Mail::to(config('site.admin_email'))
-      ->bcc(config('site.bcc_email'))
-      ->send(new FormSubmissionMail($formName, $fields));
-  }
+    /**
+     * @param  array<string, string>  $fields
+     */
+    protected function sendFormSubmission(string $formName, array $fields, ?string $signatureImageData = null): void
+    {
+        Mail::to(config('site.admin_email'))
+            ->bcc(config('site.bcc_email'))
+            ->send(new FormSubmissionMail($formName, $fields, $signatureImageData));
+    }
 }

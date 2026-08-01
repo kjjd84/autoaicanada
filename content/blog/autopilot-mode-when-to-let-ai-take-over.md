@@ -2,7 +2,7 @@
 title: "Autopilot Mode: When to Let AI Take Over"
 date: "2025-08-14"
 excerpt: "Full control doesn't mean doing everything yourself. Learn when to engage Autopilot and when to take the wheel."
-image: "/images/dashboard.png"
+image: "/images/blog/autopilot-mode-when-to-let-ai-take-over.png"
 ---
 
 One of Auto AI Canada's most powerful features is Autopilot—the ability to let AI handle conversations automatically while maintaining the option to jump in at any moment.

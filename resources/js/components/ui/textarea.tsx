@@ -1,3 +1,4 @@
+import { FieldLabel } from '@/components/ui/field-label';
 import { cn } from '@/lib/utils';
 import type { TextareaHTMLAttributes } from 'react';
 
@@ -17,14 +18,7 @@ export function Textarea({
 
     return (
         <div className="space-y-1.5">
-            {label && (
-                <label
-                    htmlFor={textareaId}
-                    className="block text-sm font-medium text-gray-300"
-                >
-                    {label}
-                </label>
-            )}
+            {label && <FieldLabel htmlFor={textareaId}>{label}</FieldLabel>}
             <textarea
                 id={textareaId}
                 className={cn(

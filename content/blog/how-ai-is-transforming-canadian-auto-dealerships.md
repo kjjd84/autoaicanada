@@ -2,7 +2,7 @@
 title: "How AI is Transforming Canadian Auto Dealerships"
 date: "2025-03-15"
 excerpt: "Discover how artificial intelligence is revolutionizing the way Canadian dealerships sell vehicles and engage with customers."
-image: "/images/ai-agent.png"
+image: "/images/blog/how-ai-is-transforming-canadian-auto-dealerships.png"
 ---
 
 The Canadian automotive industry is experiencing a seismic shift. As consumer expectations evolve and competition intensifies, dealerships across the country are turning to artificial intelligence to stay ahead.

@@ -22,16 +22,22 @@ export default function BlogIndex({ posts }: Props) {
                             <Link
                                 key={post.slug}
                                 href={`/blog/${post.slug}`}
-                                className="group glow-border overflow-hidden rounded-2xl border border-white/5 bg-white/5 transition-all hover:border-brand-500/30"
+                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] transition-all duration-300 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/10"
                             >
+                                <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
                                 {post.image && (
-                                    <img
-                                        src={post.image}
-                                        alt={post.title}
-                                        className="h-48 w-full object-cover transition-transform group-hover:scale-105"
-                                    />
+                                    <div className="relative overflow-hidden">
+                                        <div className="absolute inset-0 z-10 bg-gradient-to-t from-surface/60 via-transparent to-transparent" />
+                                        <img
+                                            src={post.image}
+                                            alt={post.title}
+                                            className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                                        />
+                                    </div>
                                 )}
-                                <div className="p-6">
+
+                                <div className="relative p-8">
                                     <time className="text-sm text-brand-300">
                                         {new Date(
                                             post.date,
@@ -41,13 +47,15 @@ export default function BlogIndex({ posts }: Props) {
                                             day: 'numeric',
                                         })}
                                     </time>
-                                    <h2 className="mt-2 text-xl font-bold text-white group-hover:text-brand-300">
+                                    <h2 className="mt-2 text-xl font-bold text-white">
                                         {post.title}
                                     </h2>
-                                    <p className="mt-2 line-clamp-3 text-sm text-gray-400">
+                                    <p className="mt-2 line-clamp-3 text-base leading-relaxed text-gray-300">
                                         {post.excerpt}
                                     </p>
                                 </div>
+
+                                <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-brand-500 to-accent transition-all duration-500 group-hover:w-full" />
                             </Link>
                         ))}
                     </div>

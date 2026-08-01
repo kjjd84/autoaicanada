@@ -2,7 +2,7 @@
 title: "Understanding Kanban Pipeline Automation"
 date: "2025-10-12"
 excerpt: "Stop manually updating lead stages. Learn how AI automatically moves prospects through your sales pipeline."
-image: "/images/dashboard.png"
+image: "/images/blog/kanban-pipeline-automation.png"
 ---
 
 Sales pipeline management shouldn't require constant manual updates. Yet most dealerships still rely on reps to remember to change lead statuses—a task that often gets forgotten in the rush of daily operations.

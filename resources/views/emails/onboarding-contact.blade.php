@@ -16,8 +16,6 @@ Please review the information above and complete the authorization form by click
 Complete Authorization
 @endcomponent
 
-If you have any questions, please contact us at paulmiller@autoaicanada.com.
-
 Thanks,<br>
 {{ config('app.name') }}
 @endcomponent

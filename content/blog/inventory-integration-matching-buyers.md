@@ -2,7 +2,7 @@
 title: "Inventory Integration: Matching Buyers to the Right Vehicle"
 date: "2025-07-08"
 excerpt: "AI that knows your inventory inside and out can recommend the perfect vehicle match for every lead."
-image: "/images/ai-agent.png"
+image: "/images/blog/inventory-integration-matching-buyers.png"
 ---
 
 Generic responses lose sales. When a customer asks about a specific vehicle and gets a vague "we have lots of options" reply, they move on. AI with inventory integration changes the conversation entirely.

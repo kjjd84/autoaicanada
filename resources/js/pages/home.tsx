@@ -12,7 +12,7 @@ const stats = [
 
 const partnerLogos = [
     { src: '/images/partner-logo-1.png', alt: 'Car Network Canada' },
-    { src: '/images/partner-logo-2.png', alt: 'Auto Network Canada' },
+    { src: '/images/partner-logo-2.png', alt: 'Powersport Network Canada' },
     { src: '/images/partner-logo-3.png', alt: 'Next Car Canada' },
     { src: '/images/partner-logo-4.png', alt: 'Marsim Auto Group' },
 ];
@@ -79,7 +79,6 @@ export default function Home() {
                         alt=""
                         className="hero-bg-mask h-full w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-surface/35 via-surface/55 to-surface" />
                 </div>
 
                 <div className="relative mx-auto max-w-7xl px-6 pb-32 pt-44 md:pb-44 md:pt-56">
