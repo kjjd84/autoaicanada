@@ -3,9 +3,9 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\LandingFormController;
-use App\Http\Controllers\OnboardingFormController;
+use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\SignatureFormController;
+use App\Http\Controllers\SignatureController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -17,12 +17,12 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/landing', [PageController::class, 'landing'])->name('landing');
 Route::get('/thanks', [PageController::class, 'thanks'])->name('thanks');
 
-Route::get('/onboarding', [PageController::class, 'onboarding'])->name('onboarding');
-Route::get('/signature', [PageController::class, 'signature'])->name('signature');
+Route::get('/onboarding', [OnboardingController::class, 'show'])->name('onboarding');
+Route::get('/signature/{token?}', [SignatureController::class, 'show'])->name('signature');
 
 Route::middleware(ProtectAgainstSpam::class)->group(function () {
     Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.store');
     Route::post('/landing', [LandingFormController::class, 'store'])->name('landing.store');
-    Route::post('/onboarding', [OnboardingFormController::class, 'store'])->name('onboarding.store');
-    Route::post('/signature', [SignatureFormController::class, 'store'])->name('signature.store');
+    Route::post('/onboarding', [OnboardingController::class, 'store'])->name('onboarding.store');
+    Route::post('/signature', [SignatureController::class, 'store'])->name('signature.store');
 });

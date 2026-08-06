@@ -3,63 +3,28 @@ import { SignaturePad } from '@/components/signature-pad';
 import { SectionHeading } from '@/components/header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useHoneypot } from '@/hooks/use-honeypot';
 import SiteLayout from '@/layouts/site-layout';
-import { useForm } from '@inertiajs/react';
+import { Form } from '@inertiajs/react';
+import { useState } from 'react';
 
-function SignatureForm() {
-    const honeypot = useHoneypot();
-    const { data, setData, post, processing, errors } = useForm({
-        date: new Date().toISOString().split('T')[0],
-        name: '',
-        signature: '',
-        [honeypot.nameFieldName]: '',
-        [honeypot.validFromFieldName]: honeypot.encryptedValidFrom,
-    });
-
-    function submit(e: React.FormEvent) {
-        e.preventDefault();
-        post('/signature');
-    }
-
-    return (
-        <form onSubmit={submit} className="space-y-6">
-            <HoneypotFields />
-            <Input
-                name="date"
-                label="Today's Date *"
-                type="date"
-                value={data.date}
-                onChange={(e) => setData('date', e.target.value)}
-                required
-                error={errors.date}
-            />
-            <Input
-                name="name"
-                label="Your Name *"
-                value={data.name}
-                onChange={(e) => setData('name', e.target.value)}
-                required
-                error={errors.name}
-            />
-            <SignaturePad
-                value={data.signature}
-                onChange={(value) => setData('signature', value)}
-                error={errors.signature}
-            />
-            <Button
-                type="submit"
-                size="lg"
-                className="w-full"
-                disabled={processing}
-            >
-                {processing ? 'Submitting...' : 'Submit Authorization'}
-            </Button>
-        </form>
-    );
+interface SignaturePrefill {
+    your_name: string | null;
+    todays_date: string;
 }
 
-export default function Signature() {
+interface SignatureProps {
+    token: string | null;
+    prefill: SignaturePrefill;
+    tokenValid: boolean;
+}
+
+export default function Signature({
+    token,
+    prefill,
+    tokenValid,
+}: SignatureProps) {
+    const [signature, setSignature] = useState('');
+
     return (
         <SiteLayout title="Signature Authorization" showHeader={false}>
             <section className="py-12">
@@ -73,6 +38,13 @@ export default function Signature() {
                         <SectionHeading title="Authorization & Signature" />
                     </div>
 
+                    {token && !tokenValid && (
+                        <div className="mb-8 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
+                            This signature link has expired or is invalid. You
+                            can still complete the form below.
+                        </div>
+                    )}
+
                     <div className="glow-border rounded-2xl border border-white/5 bg-white/5 p-8">
                         <div className="mb-8 space-y-4 text-sm leading-relaxed text-gray-300">
                             <p>
@@ -82,14 +54,60 @@ export default function Signature() {
                                 for the credit card details provided.
                             </p>
                             <p>
-                                You hereby authorize Car Network Canada Inc. to
-                                manually process the initial prorated charge,
-                                monthly service fee, and additional text amount
-                                as detailed in our agreement.
+                                You hereby authorize Auto AI Canada to manually
+                                process the initial prorated charge, monthly
+                                service fee, and additional text amount as
+                                detailed in our agreement.
                             </p>
                         </div>
 
-                        <SignatureForm />
+                        <Form
+                            action="/signature"
+                            method="post"
+                            className="space-y-6"
+                        >
+                            {({ errors, processing }) => (
+                                <>
+                                    <HoneypotFields />
+                                    {token && (
+                                        <input
+                                            type="hidden"
+                                            name="token"
+                                            value={token}
+                                        />
+                                    )}
+                                    <Input
+                                        name="todays_date"
+                                        label="Today's Date"
+                                        type="date"
+                                        defaultValue={prefill.todays_date}
+                                        error={errors.todays_date}
+                                    />
+                                    <Input
+                                        name="your_name"
+                                        label="Your Name"
+                                        defaultValue={prefill.your_name ?? ''}
+                                        error={errors.your_name}
+                                    />
+                                    <SignaturePad
+                                        name="signature"
+                                        value={signature}
+                                        onChange={setSignature}
+                                        error={errors.signature}
+                                    />
+                                    <Button
+                                        type="submit"
+                                        size="lg"
+                                        className="w-full"
+                                        disabled={processing}
+                                    >
+                                        {processing
+                                            ? 'Submitting...'
+                                            : 'Submit Authorization'}
+                                    </Button>
+                                </>
+                            )}
+                        </Form>
                     </div>
                 </div>
             </section>

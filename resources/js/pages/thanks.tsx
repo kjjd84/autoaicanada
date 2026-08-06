@@ -1,7 +1,12 @@
 import SiteLayout from '@/layouts/site-layout';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
 export default function Thanks() {
+    const { flash } = usePage().props;
+    const message =
+        flash.success ??
+        'Your submission has been received. Our team will be in touch with you shortly.';
+
     return (
         <SiteLayout title="Thank You">
             <section className="flex min-h-[60vh] items-center py-24">
@@ -24,10 +29,7 @@ export default function Thanks() {
                     <h1 className="text-gradient text-4xl font-bold">
                         Thank You!
                     </h1>
-                    <p className="mt-4 text-lg text-gray-300">
-                        Your submission has been received. Our team will be in
-                        touch with you shortly.
-                    </p>
+                    <p className="mt-4 text-lg text-gray-300">{message}</p>
                     <div className="mt-8">
                         <Link
                             href="/"

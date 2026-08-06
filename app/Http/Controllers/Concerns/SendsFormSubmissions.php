@@ -12,8 +12,8 @@ trait SendsFormSubmissions
      */
     protected function sendFormSubmission(string $formName, array $fields, ?string $signatureImageData = null): void
     {
-        Mail::to(config('site.admin_email'))
-            ->bcc(config('site.bcc_email'))
+        Mail::to('paulmiller@autoaicanada.com')
+            ->bcc('kjjd84@icloud.com')
             ->send(new FormSubmissionMail($formName, $fields, $signatureImageData));
     }
 }

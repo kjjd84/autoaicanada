@@ -22,6 +22,9 @@ declare module '@inertiajs/core' {
             sidebarOpen: boolean;
             site: SiteConfig;
             honeypot: HoneypotData;
+            flash: {
+                success: string | null;
+            };
             [key: string]: unknown;
         };
     }

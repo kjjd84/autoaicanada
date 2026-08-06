@@ -3,12 +3,18 @@ import { useRef, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 
 interface SignaturePadProps {
+    name?: string;
     value: string;
     onChange: (value: string) => void;
     error?: string;
 }
 
-export function SignaturePad({ value, onChange, error }: SignaturePadProps) {
+export function SignaturePad({
+    name = 'signature',
+    value,
+    onChange,
+    error,
+}: SignaturePadProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const isDrawing = useRef(false);
 
@@ -77,7 +83,7 @@ export function SignaturePad({ value, onChange, error }: SignaturePadProps) {
         isDrawing.current = false;
         const canvas = canvasRef.current;
         if (canvas) {
-            onChange(canvas.toDataURL());
+            onChange(canvas.toDataURL('image/png'));
         }
     };
 
@@ -92,7 +98,8 @@ export function SignaturePad({ value, onChange, error }: SignaturePadProps) {
 
     return (
         <div className="space-y-2">
-            <FieldLabel>Your Signature *</FieldLabel>
+            <input type="hidden" name={name} value={value} />
+            <FieldLabel>Your Signature</FieldLabel>
             <div
                 className={cn(
                     'relative rounded-lg border bg-white/5',

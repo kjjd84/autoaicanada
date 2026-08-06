@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\Honeypot\SpamProtection;
 use Spatie\Honeypot\SpamResponder\BlankPageResponder;
 
 return [
@@ -55,17 +56,17 @@ return [
      * if so the request will be stamped as spam. Be careful! When using the
      * global middleware be sure to add honeypot fields to each form.
      */
-    'honeypot_fields_required_for_all_forms' => false,
+    'honeypot_fields_required_for_all_forms' => true,
 
     /*
      * This class is responsible for applying all spam protection
      * rules for a request. In most cases, you shouldn't change
      * this value.
      */
-    'spam_protection' => \Spatie\Honeypot\SpamProtection::class,
+    'spam_protection' => SpamProtection::class,
 
     /*
-     * need to add @cspNonce https://github.com/spatie/laravel-csp in style tag hidden items 
+     * need to add @cspNonce https://github.com/spatie/laravel-csp in style tag hidden items
     */
     'with_csp' => env('HONEYPOT_WITH_CSP', false),
 ];

@@ -3,7 +3,6 @@ import { SectionHeading } from '@/components/header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
 import SiteLayout from '@/layouts/site-layout';
 import { Form } from '@inertiajs/react';
 import type { ReactNode } from 'react';
@@ -41,7 +40,7 @@ export default function Onboarding() {
                         />
                         <SectionHeading
                             title="Dealer Onboarding"
-                            subtitle="Complete this form to onboard a new dealership."
+                            subtitle="Complete this form to onboard a new dealership. All fields are optional."
                         />
                     </div>
 
@@ -56,52 +55,45 @@ export default function Onboarding() {
                                 >
                                     <Input
                                         name="dealership_name"
-                                        label="Dealership Name *"
-                                        required
+                                        label="Dealership Name"
                                         error={errors.dealership_name}
                                     />
                                     <Input
                                         name="dealership_address"
-                                        label="Dealership Street Address *"
-                                        required
+                                        label="Dealership Street Address"
                                         error={errors.dealership_address}
                                     />
                                     <Input
                                         name="dealership_hours"
-                                        label="Dealership Business Hours *"
-                                        required
+                                        label="Dealership Business Hours"
                                         error={errors.dealership_hours}
                                     />
                                     <Input
                                         name="dealership_crm"
-                                        label="Dealership CRM Provider *"
-                                        required
+                                        label="Dealership CRM Provider"
                                         error={errors.dealership_crm}
                                     />
                                 </FormSection>
 
                                 <FormSection
                                     title="Contact"
-                                    description="The primary contact for the dealership. An email will be sent to them with the details of this onboarding form."
+                                    description="The primary contact for the dealership. An email will be sent to them with a link to sign."
                                 >
                                     <Input
                                         name="contact_name"
-                                        label="Contact Name *"
-                                        required
+                                        label="Contact Name"
                                         error={errors.contact_name}
                                     />
                                     <Input
                                         name="contact_email"
-                                        label="Contact Email Address *"
+                                        label="Contact Email Address"
                                         type="email"
-                                        required
                                         error={errors.contact_email}
                                     />
                                     <Input
                                         name="contact_phone"
-                                        label="Contact Phone Number *"
+                                        label="Contact Phone Number"
                                         type="tel"
-                                        required
                                         error={errors.contact_phone}
                                     />
                                 </FormSection>
@@ -112,10 +104,13 @@ export default function Onboarding() {
                                 >
                                     <Select
                                         name="lead_type"
-                                        label="Will the AI contact new leads, old leads, or both? *"
-                                        required
+                                        label="Will the AI contact new leads, old leads, or both?"
                                         error={errors.lead_type}
                                         options={[
+                                            {
+                                                value: '',
+                                                label: 'Select an option',
+                                            },
                                             {
                                                 value: 'old',
                                                 label: 'Old Leads',
@@ -132,10 +127,13 @@ export default function Onboarding() {
                                     />
                                     <Select
                                         name="use_inventory"
-                                        label="Will the AI use the current dealer vehicle inventory? *"
-                                        required
+                                        label="Will the AI use the current dealer inventory?"
                                         error={errors.use_inventory}
                                         options={[
+                                            {
+                                                value: '',
+                                                label: 'Select an option',
+                                            },
                                             { value: 'yes', label: 'Yes' },
                                             { value: 'no', label: 'No' },
                                             {
@@ -151,8 +149,7 @@ export default function Onboarding() {
                                     />
                                     <Input
                                         name="appointment_person"
-                                        label="Appointment Person Name *"
-                                        required
+                                        label="Appointment Person Name"
                                         error={errors.appointment_person}
                                     />
                                 </FormSection>
@@ -163,22 +160,19 @@ export default function Onboarding() {
                                 >
                                     <Input
                                         name="notify_name"
-                                        label="Notify Name *"
-                                        required
+                                        label="Notify Name"
                                         error={errors.notify_name}
                                     />
                                     <Input
                                         name="notify_email"
-                                        label="Notify Email Address *"
+                                        label="Notify Email Address"
                                         type="email"
-                                        required
                                         error={errors.notify_email}
                                     />
                                     <Input
                                         name="notify_phone"
-                                        label="Notify Phone Number *"
+                                        label="Notify Phone Number"
                                         type="tel"
-                                        required
                                         error={errors.notify_phone}
                                     />
                                 </FormSection>
@@ -186,22 +180,19 @@ export default function Onboarding() {
                                 <FormSection title="Credit Card">
                                     <Input
                                         name="credit_card_number"
-                                        label="Credit Card Number *"
-                                        required
+                                        label="Credit Card Number"
                                         error={errors.credit_card_number}
                                     />
                                     <div className="grid gap-4 md:grid-cols-2">
                                         <Input
                                             name="credit_card_expiry"
-                                            label="Expiration Date (MM/YY) *"
+                                            label="Credit Card Expiration Date"
                                             placeholder="MM/YY"
-                                            required
                                             error={errors.credit_card_expiry}
                                         />
                                         <Input
                                             name="credit_card_cvv"
-                                            label="Security Code (CVV/CVC) *"
-                                            required
+                                            label="Credit Card Security Code"
                                             error={errors.credit_card_cvv}
                                         />
                                     </div>
@@ -213,50 +204,43 @@ export default function Onboarding() {
                                 >
                                     <Input
                                         name="billing_name"
-                                        label="Billing Name *"
-                                        required
+                                        label="Billing Name"
                                         error={errors.billing_name}
                                     />
                                     <Input
                                         name="billing_address"
-                                        label="Billing Address *"
-                                        required
+                                        label="Billing Address"
                                         error={errors.billing_address}
                                     />
                                     <div className="grid gap-4 md:grid-cols-3">
                                         <Input
                                             name="billing_city"
-                                            label="Billing City *"
-                                            required
+                                            label="Billing City"
                                             error={errors.billing_city}
                                         />
                                         <Input
                                             name="billing_province"
-                                            label="Billing Province *"
-                                            required
+                                            label="Billing Province"
                                             error={errors.billing_province}
                                         />
                                         <Input
                                             name="billing_postal_code"
-                                            label="Billing Postal Code *"
-                                            required
+                                            label="Billing Postal Code"
                                             error={errors.billing_postal_code}
                                         />
                                     </div>
                                 </FormSection>
 
-                                <FormSection title="Payments (Required)">
+                                <FormSection title="Payments">
                                     <div className="grid gap-4 md:grid-cols-2">
                                         <Input
                                             name="prorated_payment"
-                                            label="Prorated Payment *"
-                                            required
+                                            label="Prorated Payment"
                                             error={errors.prorated_payment}
                                         />
                                         <Input
                                             name="monthly_payment"
-                                            label="Monthly Payment *"
-                                            required
+                                            label="Monthly Payment"
                                             error={errors.monthly_payment}
                                         />
                                     </div>
@@ -281,28 +265,17 @@ export default function Onboarding() {
                                     </div>
                                 </FormSection>
 
-                                <FormSection title="Salesperson (Required)">
+                                <FormSection title="Salesperson">
                                     <Input
                                         name="salesperson_name"
-                                        label="Salesperson Name *"
-                                        required
+                                        label="Salesperson Name"
                                         error={errors.salesperson_name}
                                     />
                                     <Input
                                         name="salesperson_email"
-                                        label="Salesperson Email *"
+                                        label="Salesperson Email"
                                         type="email"
-                                        required
                                         error={errors.salesperson_email}
-                                    />
-                                </FormSection>
-
-                                <FormSection title="Notes">
-                                    <Textarea
-                                        name="notes"
-                                        label="Additional notes for this dealer's setup"
-                                        rows={4}
-                                        error={errors.notes}
                                     />
                                 </FormSection>
 

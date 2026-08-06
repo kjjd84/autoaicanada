@@ -49,6 +49,9 @@ class HandleInertiaRequests extends Middleware
                 'gtmId' => config('site.gtm_id'),
             ],
             'honeypot' => fn () => app(Honeypot::class)->toArray(),
+            'flash' => [
+                'success' => fn () => $request->session()->get('success'),
+            ],
         ];
     }
 }
